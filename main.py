@@ -97,13 +97,8 @@ while 1 == 1:
             
                         
             pygame.draw.rect(screen, (0, 0, 255), (Character.x, Character.y, Character.width, Character.height))
-            pygame.draw.rect(screen, (255, 0 ,0), (Border.x, Border.y, Border.width, Border.height))
             pygame.draw.rect(screen, (25, 100, 93), (FinishLine.x, FinishLine.y, FinishLine.width, FinishLine.height))
             #pygame.draw.rect(screen, (0, 255, 0), (FinishLine.hitbox_x, 10, 5, 10000))
             pygame.display.update()
 
 run = True
-                 
-                  
-      
-            
