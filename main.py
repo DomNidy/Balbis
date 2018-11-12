@@ -1,6 +1,7 @@
 import pygame
 import pygame,sys
 import random
+import time
 
 pygame.display.init()
 pygame.font.init()
@@ -35,7 +36,11 @@ class FinishLine:
       height = 1600
       hitbox_x = 1500 - Character.width 
 
-zoom_data = [Character.width, Character.height, Border.width, Border.height]
+font = pygame.font.SysFont(None, 100)
+
+def message_to_screen(msg, color, x, y):
+      screen_text = font.render(msg, True, color)
+      screen.blit(screen_text, [x, y])
 
 run = True
 while run:
@@ -64,19 +69,20 @@ while run:
                   Character.y += Character.vel
                   Character.width += 0.1
                   Character.height += 0.1
-      if keys[pygame.K_TAB]:
-            for i in zoom_data:
-                  i += 100
             
       
       Character.area = Character.width * Character.height            
       if keys[pygame.K_TAB]:
-            print("Characters Area: " + str(Character.area))          
+            run = False
       Character.score = (Character.max_area - Character.area * 2) / 1000
       
       #Collision detection for
       FinishLine.hitbox_x = 1500 - Character.width
       if round(Character.x) == round(FinishLine.hitbox_x):
+            message_to_screen("You win!", (3,33,44), 800, 400)
+            message_to_screen("Score: " + str(round(Character.score)), (3,33,44), 800, 340)
+            pygame.display.update()
+            time.sleep(2)
             pygame.quit()
       if round(Character.x) == Border.hitbox_x and round(Character.y) == Border.hitbox_y:
             pygame.quit()
