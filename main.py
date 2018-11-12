@@ -9,9 +9,10 @@ screen_width=1600
 screen_height=900
 screen=pygame.display.set_mode([screen_width,screen_height])
 pygame.display.set_caption("Balbis")
-
+background = pygame.image.load("background.jpg").convert()
 while 1 == 1:
-
+      screen.blit(background, (0,0))
+      pygame.display.update()
       class Character:
             x = 50
             y = 50
@@ -47,7 +48,6 @@ while 1 == 1:
       run = True
       while run:
             pygame.time.delay(1)
-
             for event in pygame.event.get():
                   #Quits Game
                   if event.type == pygame.QUIT:
@@ -57,25 +57,25 @@ while 1 == 1:
 
             if keys[pygame.K_LEFT]:
                         Character.x -= Character.vel
-                        Character.width += 0.1
-                        Character.height += 0.1
+                        Character.width += 0.03
+                        Character.height += 0.03
             if keys[pygame.K_RIGHT]:
                         Character.x += Character.vel
-                        Character.width += 0.1
-                        Character.height += 0.1
+                        Character.width += 0.03
+                        Character.height += 0.03
             if keys[pygame.K_UP]:
                         Character.y -= Character.vel
-                        Character.width += 0.1
-                        Character.height += 0.1
+                        Character.width += 0.03
+                        Character.height += 0.03
             if keys[pygame.K_DOWN]:
                         Character.y += Character.vel
-                        Character.width += 0.1
-                        Character.height += 0.1
+                        Character.width += 0.03
+                        Character.height += 0.03
                   
             
             Character.area = Character.width * Character.height            
-            if keys[pygame.K_TAB]:
-                  run = False
+
+                  
             Character.score = (Character.max_area - Character.area * 2) / 1000
             
             #On Game Win
@@ -96,7 +96,6 @@ while 1 == 1:
                   run = False
             
                         
-            screen.fill((0, 0, 0))
             pygame.draw.rect(screen, (0, 0, 255), (Character.x, Character.y, Character.width, Character.height))
             pygame.draw.rect(screen, (255, 0 ,0), (Border.x, Border.y, Border.width, Border.height))
             pygame.draw.rect(screen, (25, 100, 93), (FinishLine.x, FinishLine.y, FinishLine.width, FinishLine.height))
