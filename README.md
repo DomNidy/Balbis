@@ -6,3 +6,6 @@ Balbis is an indie game where you have to complete obstacle courses.'
 
 <11/12/2018 @ 10:47 AM>
 I may try and update this in the future but I have some more learning to do and this project is very messy.
+
+<11/12/2018 @ 10:53 AM>
+Make sure to extract files to a folder out of the zip and have pygame installed I did not py2exe it.
