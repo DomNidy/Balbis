@@ -1,3 +1,4 @@
+
 import pygame
 import pygame,sys
 import random
@@ -14,7 +15,7 @@ class Character:
       y = 50
       width = 10
       height = 10
-      vel = 0.3
+      vel = 0.9
       area = width * height
       max_area = 1000000
       score = (max_area - area) /1000
@@ -31,6 +32,7 @@ class FinishLine:
       y = 0
       width = 10
       height = 1600
+      hitbox_x = 1500 - Character.width 
 
 zoom_data = [Character.width, Character.height, Border.width, Border.height]
 
@@ -73,17 +75,18 @@ while run:
             print("Characters Area: " + str(Character.area))
             
       Character.score = (Character.max_area - Character.area * 2) / 1000
-      if keys[pygame.K_EQUALS]:
-            print("Score: " + str(Character.score))
-
-      if round(Character.x) == FinishLine.x:
+      FinishLine.hitbox_x = 1500 - Character.width
+      if round(Character.x) == round(FinishLine.hitbox_x):
             pygame.quit()
+
+      #Collision detection for finishline, (drawing hitbox)
       
                   
       screen.fill((0, 0, 0))
       pygame.draw.rect(screen, (0, 0, 255), (Character.x, Character.y, Character.width, Character.height))
       pygame.draw.rect(screen, (255, 0 ,0), (Border.x, Border.y, Border.width, Border.height))
       pygame.draw.rect(screen, (25, 100, 93), (FinishLine.x, FinishLine.y, FinishLine.width, FinishLine.height))
+      #pygame.draw.rect(screen, (0, 255, 0), (FinishLine.hitbox_x, 10, 5, 10000))
       pygame.display.update()
 
 pygame.quit()
